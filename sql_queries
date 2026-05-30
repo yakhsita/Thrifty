@@ -21,6 +21,12 @@ CREATE TABLE products (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+INSERT INTO products
+(title, description, category, price, condition, size_dimension, pickup_address, status) VALUES
+('iPhone 12','Good condition','Electronics',15000,'Used','6.1 inch','Mumbai','available'),
+('Nike Shoes','Running shoes','Fashion',2500,'Used','Size 9','Bangalore','available'),
+('Study Table','Wooden table','Household',1200,'Used','120cm x 60cm','Mysore','available');
+
 CREATE TABLE categories (
     id SERIAL PRIMARY KEY,
     category_name TEXT UNIQUE
