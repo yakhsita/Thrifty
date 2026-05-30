@@ -1,0 +1,56 @@
+CREATE TABLE profiles (
+    id UUID PRIMARY KEY REFERENCES auth.users(id),
+    full_name TEXT,
+    address TEXT,
+    phone TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE products (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    seller_id UUID REFERENCES auth.users(id),
+    title TEXT NOT NULL,
+    description TEXT,
+    category TEXT,
+    price NUMERIC(10,2),
+    condition TEXT,
+    size_dimension TEXT,
+    pickup_address TEXT,
+    image_url TEXT,
+    status TEXT DEFAULT 'available',
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE categories (
+    id SERIAL PRIMARY KEY,
+    category_name TEXT UNIQUE
+);
+
+INSERT INTO categories(category_name)
+VALUES
+('Electronics'),
+('Fashion'),
+('Household'),
+('Games & Toys'),
+('Books');
+
+CREATE TABLE cart (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id),
+    product_id BIGINT REFERENCES products(id),
+    quantity INTEGER DEFAULT 1
+);
+
+CREATE TABLE favorites (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id),
+    product_id BIGINT REFERENCES products(id)
+);
+
+CREATE TABLE orders (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    buyer_id UUID REFERENCES auth.users(id),
+    product_id BIGINT REFERENCES products(id),
+    order_status TEXT DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT NOW()
+);
