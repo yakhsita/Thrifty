@@ -19,9 +19,3 @@ thrift-store/
      ├── sell.js
      ├── cart.js
      └── profile.js
-
-<> index.html
-      Search Bar
-      Latest Products
-      Categories
-      Bottom Navigation
