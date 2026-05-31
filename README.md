@@ -29,7 +29,7 @@ thrift-store/
 | Table | Purpose |
 | :---: | :---: |
 | profiles | Stores name, phone, address per user |
-| products | All listings — title, price, category, image, status |
+| products | Selling product listings — title, price, category, image, status |
 | categories | Electronics, Fashion, Household, Games & Toys, Bookscart | 
 | Items | a user has added to cart | 
 |favorites |Items a user has hearted |
